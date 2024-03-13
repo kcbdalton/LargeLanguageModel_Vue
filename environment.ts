@@ -1,3 +1,3 @@
 export const environment = {
-    OPENAT_API_KEY: '',
+    OPENAT_API_KEY: 'afdsga',
 }
