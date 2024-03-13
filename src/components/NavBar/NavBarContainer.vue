@@ -1,10 +1,12 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { VToolbar, VRow, VCol } from 'vuetify/lib/components/index.mjs'
-import NavBarButton from './NavBarButton.vue'
+import { VToolbar, VRow, VCol } from 'vuetify/lib/components/index.mjs';
+import NavBarButton from './NavBarButton.vue';
+import ProjectViewer from '../Projects/ProjectViewer.vue';
 const router = useRouter();
-const showPDF = ref(false);
+// const showPDF = ref(false);
+const projectViewerDialog = ref(false);
 
 const navBarButtons = ref([
 	{
@@ -25,8 +27,8 @@ const navBarButtons = ref([
 	{
 		label: "View Projects",
 		icon: "mdi-text-box-search-outline",
-		clickAction: () => showPDF.value = true
-	}
+		clickAction: () => projectViewerDialog.value.open()
+	},
 ]);
 </script>
 
@@ -42,6 +44,8 @@ const navBarButtons = ref([
 			</v-col>
 		</v-row>
 	</v-toolbar>
+	<ProjectViewer ref="projectViewerDialog"/>
+	
 </template>
 
 <style scoped>

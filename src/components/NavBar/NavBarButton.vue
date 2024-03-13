@@ -20,6 +20,6 @@ defineProps({
 <style scoped>
 .button {
 	color: rgb(230, 220, 172);
-	font-size: 20px;
+	font-size: 18px;
 }
 </style>

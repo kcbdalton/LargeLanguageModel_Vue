@@ -4,7 +4,10 @@ import { VRow, VCol, VIcon } from 'vuetify/lib/components/index.mjs';
 // const userPrompt = ref('');
 
 const props = defineProps({
-	message: String
+	message: {
+		user: String,
+		prompt: String
+	}
 });
 
 </script>
@@ -12,19 +15,19 @@ const props = defineProps({
 <template>
 	<v-row class="row" dense align="center">
 		<v-col md="1">
-			<v-icon icon="mdi-account-star"></v-icon>
+			<v-icon v-if="props.message.user==='human'" icon="mdi-account-star" style="transform: scale(150%);"></v-icon>
 		</v-col>
 		<v-col md=10>
 			<div class="message-container">
 				<div class="message-content">
 					<p class="message">
-						{{ props.message }}
+						{{ props.message.prompt }}
 					</p>
 				</div>
 			</div>
 		</v-col>
 		<v-col md="1">
-			<!-- <v-icon icon="mdi-plus"></v-icon> -->
+			<v-icon v-if="props.message.user==='ai'" icon="mdi-robot-happy" style="transform: scale(150%);"></v-icon>
 		</v-col>
 	</v-row>
 </template>

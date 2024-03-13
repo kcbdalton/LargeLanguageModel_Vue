@@ -7,7 +7,12 @@ const userPrompt = ref('');
 
 const handleUserPrompt = (prompt) => {
 	userPrompt.value = prompt;
-	messages.value.push(prompt)
+	messages.value.push(
+		{
+			user: 'human', 
+			prompt: prompt
+		}
+	);
 }
 
 </script>
@@ -18,7 +23,6 @@ const handleUserPrompt = (prompt) => {
 		<div v-for="(message, index) in messages" :key="index" style="display: flex; width: 100%;">
 			<MessageTextArea v-if="messages.length > 0" :message="message"/>
 		</div>
-		<!-- <component :is="userPromptComponent" :userSubmittedPrompt="userSubmittedPrompt" /> -->
 	</div>
 </template>
 
