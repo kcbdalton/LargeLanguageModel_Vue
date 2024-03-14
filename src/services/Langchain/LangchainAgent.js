@@ -1,6 +1,7 @@
 const { LLMMathChain } = require('langchain/chains');
 const { OpenAI } = require('langchain/llms');
 import fs from "fs"
+import { environment } from "../../../environment";
 // const { PromptTemplate } = require('langchain/prompts');
 // const { LLMChain } = require('langchain/chains');
 // const { initialize_agent, AgentType } = require('langchain/agents');
@@ -9,7 +10,11 @@ import fs from "fs"
 // const { MessagesPlaceholder } = require('langchain/prompts');
 // const { ConversationBufferMemory } = require('langchain/memory');
 
-const llm = new ChatOpenAI({ temperature: 0, model: "gpt-4-0613" });
+const llm = new ChatOpenAI({ 
+	openAIApiKey: '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',
+	temperature: 0, 
+	model: "gpt-4-0613" 
+});
 const llmMathChain = LLMMathChain.fromLLM({ llm, verbose: true });
 
 const tools = [
