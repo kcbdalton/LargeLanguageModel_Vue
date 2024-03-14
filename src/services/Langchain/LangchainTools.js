@@ -21,10 +21,7 @@ async function main() {
 			func: async (prompt) => llmRetrieveBenInfo(prompt),
 		}),
 	];
-	
-	// Get the prompt to use - you can modify this!\
-	// If you want to see the prompt in full, you can at:
-	// https://smith.langchain.com/hub/hwchase17/openai-functions-agent
+
 	const prompt = ChatPromptTemplate.fromMessages(
 		[
 			("system", "You are a helpful assistant who retrieves information from documents about Ben Dalton"),
@@ -42,9 +39,9 @@ async function main() {
 	
 	
 	const agentExecutor = new AgentExecutor({
-	  agent,
-	  tools,
-	  verbose: true,
+		agent,
+		tools,
+		verbose: true,
 	});
 	
 	const result = await agentExecutor.invoke({
