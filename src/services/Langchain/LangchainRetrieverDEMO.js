@@ -67,4 +67,4 @@ async function llmRetrieveBenInfo(prompt) {
 module.exports = {
 	llmRetrieveBenInfo
 };
-// llmRetrieveBenInfo("What is Ben favorite color");
+llmRetrieveBenInfo("What is Ben favorite color");
