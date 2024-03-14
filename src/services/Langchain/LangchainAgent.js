@@ -11,7 +11,7 @@ import { environment } from "../../../environment";
 // const { ConversationBufferMemory } = require('langchain/memory');
 
 const llm = new ChatOpenAI({ 
-	openAIApiKey: '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',
+	openAIApiKey: environment.OPENAI_API_KEY,
 	temperature: 0, 
 	model: "gpt-4-0613" 
 });
