@@ -12,7 +12,7 @@ const openAIConnection =  new ChatOpenAI({
 const modelEngine = 'gpt-3.5-turbo';
 
 async function makeOpenAIRequest(prompt) {
-	const response = await openAI.chat.completions.create({
+	const response = await openAIConnection.chat.completions.create({
 		model: modelEngine,
 		messages: [{
 			role: 'user',

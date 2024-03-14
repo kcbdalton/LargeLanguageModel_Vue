@@ -1,6 +1,6 @@
 const { ChatOpenAI } = require("@langchain/openai");
 const { tools } = require("./LangchainTools");
-const { createOpenAIFunctionsAgent, AgentExecutor } = require("langchain/agents");
+const { createOpenAIFunctionsAgent } = require("langchain/agents");
 
 
 console.log(tools)
