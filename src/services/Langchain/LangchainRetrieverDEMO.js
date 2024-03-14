@@ -6,7 +6,7 @@ const { OpenAIEmbeddings } = require("@langchain/openai");
 const { HumanMessage, AIMessage } = require("@langchain/core/messages");
 const { createStuffDocumentsChain } = require("langchain/chains/combine_documents");
 const { ChatPromptTemplate, MessagesPlaceholder } = require("@langchain/core/prompts");
-const {TextLoader } = require("langchain/document_loaders/fs/text")
+const { TextLoader } = require("langchain/document_loaders/fs/text")
 const path = require('path')
 
 // https://js.langchain.com/docs/use_cases/chatbots/retrieval
