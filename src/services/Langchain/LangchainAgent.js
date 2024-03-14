@@ -13,7 +13,8 @@ const llm = new ChatOpenAI({
 });
 const agent = createOpenAIFunctionsAgent({
 	llm,
-	tools
+	tools,
+	prompt: "hello"
 });
 console.log("agent:", agent)
 
