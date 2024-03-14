@@ -50,7 +50,14 @@ def retrieve_personal_info(prompt: str):
 		)
 	
 	print("prompt:\n", prompt)
+
+
+	# try create_retrieval_chain 
+	# https://python.langchain.com/docs/modules/chains
 	chain = create_stuff_documents_chain(llm, prompt)
+
+
+
 	print("chain:\n", chain)
 	response = chain.invoke({
 		"input": prompt,
