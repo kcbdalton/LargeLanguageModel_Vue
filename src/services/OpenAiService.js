@@ -6,7 +6,7 @@ import { environment } from "../../environment";
 
 const openAI = new OpenAI(
 	{
-		apiKey: environment.OPENAT_API_KEY,
+		apiKey: environment.OPENAI_API_KEY,
 		dangerouslyAllowBrowser: true
 	}
 );
