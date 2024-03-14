@@ -2,23 +2,33 @@
 import { ref } from 'vue';
 import PromptInput from '../components/PromptInput.vue';
 import MessageTextArea from '../components/MessageTextArea.vue';
+import NavBarContainer from '@/components/NavBar/NavBarContainer.vue';
+import { messageService } from '../services/MessageService';
 const messages = ref([]);
-const userPrompt = ref('');
 
 const handleUserPrompt = (prompt) => {
-	userPrompt.value = prompt;
+	messageService.userPrompt = prompt;
 	messages.value.push(
 		{
 			user: 'human', 
-			prompt: prompt
+			text: prompt
 		}
 	);
 }
 
+const handleAiResponse = (response) => {
+	messages.value.push(
+		{
+			user: 'ai', 
+			text: response
+		}
+	);
+}
 </script>
 
 <template>
-	<PromptInput @userPrompt="handleUserPrompt"/>
+	<PromptInput @userPrompt="handleUserPrompt" @aiResponse="handleAiResponse"/>
+	<NavBarContainer @aiResponse="handleAiResponse"/>
 	<div class="chat-container">
 		<div v-for="(message, index) in messages" :key="index" style="display: flex; width: 100%;">
 			<MessageTextArea v-if="messages.length > 0" :message="message"/>
@@ -37,7 +47,7 @@ const handleUserPrompt = (prompt) => {
 	height: 600px; 
 	width: 80vw;
 	border-radius: 5px;
-	border: 2px solid red;
+	/* border: 2px solid red; */
 	overflow-x: hidden;
 	overflow-y: auto; 
 	justify-content: flex-end;

@@ -10,6 +10,7 @@ const props = defineProps({
 	}
 });
 
+
 </script>
 
 <template>
@@ -21,7 +22,7 @@ const props = defineProps({
 			<div class="message-container">
 				<div class="message-content">
 					<p class="message">
-						{{ props.message.prompt }}
+						{{ props.message.text }}
 					</p>
 				</div>
 			</div>

@@ -1,17 +1,20 @@
 <script setup>
-import { ref, defineEmits } from 'vue';
+import { ref, defineEmits, watch } from 'vue';
 import { VTextField, VRow, VCol, VIcon } from 'vuetify/lib/components/index.mjs';
-
+import {  createOpenAiRequest } from '../services/MessageService';
 const userPrompt = ref('');
+const response = ref('');
 const animationTrigger = ref(false);
 
-const handleUserInput = (event, source) => {
+async function handleUserInput(event, source) {
 	if ((source === 'enter'  && userPrompt.value != '') || (source === 'icon' && userPrompt.value != '')) {
 		triggerSuccessAnimation();	
 		emit('userPrompt', userPrompt.value);
 		userPrompt.value = '';
+		response.value = await createOpenAiRequest();
+		console.log("response in handleuserinpit", response.value)
 	}
-};
+}
 
 const triggerSuccessAnimation = () => {
     animationTrigger.value = true;
@@ -20,8 +23,15 @@ const triggerSuccessAnimation = () => {
     }, 1000); // Change this value according to your animation duration
 };
 
+watch(response, (newValue, oldValue) => {
+	console.log("response changed")
+	console.log("old value: ", oldValue)
+	emit('aiResponse', newValue)
+})
+
 const emit = defineEmits({
-	userPrompt: String
+	userPrompt: String,
+	aiResponse: String
 });
 
 </script>
