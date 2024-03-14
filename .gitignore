@@ -2,7 +2,11 @@
 node_modules
 /dist
 environment.js
-
+/lambda/include
+/lambda/Lib
+/lambda/Scripts
+/lambda/Ben-info.txt
+/lambda/pyvenv.cfg
 
 # local env files
 .env.local

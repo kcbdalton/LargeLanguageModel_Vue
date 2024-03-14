@@ -1,4 +1,4 @@
-const { ChatOpenAI } = require("@langchain/openai");
+// const { ChatOpenAI } = require("@langchain/openai");
 const { RecursiveCharacterTextSplitter } = require("langchain/text_splitter");
 // const { CheerioWebBaseLoader } = require("langchain/document_loaders/web/cheerio");
 const { MemoryVectorStore } = require("langchain/vectorstores/memory");
@@ -7,16 +7,10 @@ const { HumanMessage } = require("@langchain/core/messages");
 const { createStuffDocumentsChain } = require("langchain/chains/combine_documents");
 const { ChatPromptTemplate, MessagesPlaceholder } = require("@langchain/core/prompts");
 const { TextLoader } = require("langchain/document_loaders/fs/text")
-// const path = require('path')
-
+const { openAIConnection } = require("../OpenAiService")
 // https://js.langchain.com/docs/use_cases/chatbots/retrieval
 
-const chat = new ChatOpenAI({
-	modelName: "gpt-3.5-turbo-1106",
-	temperature: 0,
-	openAIApiKey:'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'
-});
-
+console.log("conn:\n", openAIConnection)
 async function llmRetrieveBenInfo(prompt) {
 	// const textFile = path.join(__dirname, "demo.txt");
 	const loader = new TextLoader("./src/services/Langchain/demo.txt", 'utf-8');
@@ -54,7 +48,7 @@ async function llmRetrieveBenInfo(prompt) {
 	]);
 
 	const documentChain = await createStuffDocumentsChain({
-		llm: chat,
+		llm: openAIConnection,
 		prompt: questionAnsweringPrompt,
 	});
 	let llmResponse = await documentChain.invoke({
@@ -64,8 +58,8 @@ async function llmRetrieveBenInfo(prompt) {
 	console.log("Response from the LLM:\n", llmResponse)
 }
 
-llmRetrieveBenInfo("What is Ben favorite color");
+llmRetrieveBenInfo("Where did ben does his undergrad degree");
 
-module.exports = {
-	llmRetrieveBenInfo
-};
+// export default {
+// 	llmRetrieveBenInfo
+// };

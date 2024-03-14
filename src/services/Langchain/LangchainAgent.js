@@ -1,26 +1,27 @@
-const { ChatOpenAI } = require("@langchain/openai");
+/* eslint-disable no-undef */
 const { tools } = require("./LangchainTools");
 const { createOpenAIFunctionsAgent } = require("langchain/agents");
+const { openAIConnection } = require("../OpenAiService")
+const { ChatPromptTemplate, MessagesPlaceholder } = require("@langchain/core/prompts");
 
-
-console.log(tools)
-
-
-const llm = new ChatOpenAI({ 
-	openAIApiKey:'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',
-	temperature: 0, 
-	modelName: "gpt-4-0613" 
-});
+const prompt = ChatPromptTemplate.fromMessages(
+	[
+		("system", "You are a helpful assistant who retrieves information from documents about Ben Dalton"),
+		("user", new MessagesPlaceholder(variable_name="input")),
+		new MessagesPlaceholder(variable_name="agent_scratchpad"),
+	]
+);
 const agent = createOpenAIFunctionsAgent({
-	llm,
+	openAIConnection,
 	tools,
-	prompt: "hello"
+	prompt
 });
+
 console.log("agent:", agent)
 
 
 async function invokeLLM(prompt) {
-	const response = await llm.invoke(prompt);
+	const response = await openAIConnection.invoke(prompt);
 	console.log("AI Response:", response.content);
 }
 
