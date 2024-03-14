@@ -1,11 +1,10 @@
 const { ChatOpenAI } = require("@langchain/openai");
 const { ChatPromptTemplate, MessagesPlaceholder, BaseMessageStringPromptTemplate } = require("@langchain/core/prompts");
-const { llmRetrieveBenInfo } = require('./LangchainRetrieverDEMO')
 const { createOpenAIFunctionsAgent, AgentExecutor } = require("langchain/agents");
 const { pull } = require("langchain/hub");
-
 const { DynamicTool } = require("@langchain/core/tools");
-
+const { llmRetrieveBenInfo } = require('./LangchainRetrieverDEMO')
+const { openAIConnection } = require('../OpenAiService')
 
 async function main() {
 	const llm = new ChatOpenAI({
