@@ -3,7 +3,7 @@ from langchain.agents import AgentType
 from langchain.prompts import MessagesPlaceholder
 from langchain.memory import ConversationBufferMemory
 from langchain_openai import ChatOpenAI
-from langchain_community.vectorstores import FAISS
+from langchain_community.vectorstores import faiss
 from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import CharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
@@ -11,13 +11,11 @@ from langchain_core.documents import Document
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.messages.human import HumanMessage
 from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain.chains import create_retrieval_chain
+from langchain import hub
 import os
-from dotenv import load_dotenv
-load_dotenv() 
 
-
-
-llm = ChatOpenAI(temperature=0, model="gpt-4-0613", api_key=os.getenv("OPENAI_API_KEY"))
+openai_connection = ChatOpenAI(temperature=0, model="gpt-4-0613", api_key='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')
 
 print(llm)
 # llm = ChatOpenAI()
@@ -31,8 +29,8 @@ def retrieve_personal_info(prompt: str):
 	print("text splitter: \n", text_splitter)
 	texts = text_splitter.split_documents(docs)
 	print("texts: \n", texts)
-	embeddings = OpenAIEmbeddings()
-	vector_store = FAISS.from_documents(texts, embeddings)
+	embeddings = OpenAIEmbeddings( api_key='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')
+	vector_store = faiss.FAISS.from_documents(texts, embeddings)
 	retriever = vector_store.as_retriever()
 	context_docs = retriever.get_relevant_documents(prompt)
 
@@ -54,12 +52,13 @@ def retrieve_personal_info(prompt: str):
 
 	# try create_retrieval_chain 
 	# https://python.langchain.com/docs/modules/chains
-	chain = create_stuff_documents_chain(llm, prompt)
+	combine_docs_chain = create_stuff_documents_chain(llm, prompt)
+	retrieval_chain = create_retrieval_chain(retriever, combine_docs_chain)
 
+	print("retrieval chain: ", retrieval_chain)
 
-
-	print("chain:\n", chain)
-	response = chain.invoke({
+	# print("chain:\n", chain)
+	response = retrieval_chain.invoke({
 		"input": prompt,
 		"context": context_docs})
 	print("response:\n", response)
@@ -98,3 +97,13 @@ if __name__ == "__main__":
 	# if prompt == "exit":
 	# 	break
 	agent.invoke(prompt)
+
+	retrieval_qa_chat_prompt = hub.pull("langchain-ai/retrieval-qa-chat")
+	llm = ChatOpenAI()
+	retriever = ...
+	combine_docs_chain = create_stuff_documents_chain(
+		llm, retrieval_qa_chat_prompt
+	)
+	retrieval_chain = create_retrieval_chain(retriever, combine_docs_chain)
+
+	chain.invoke({"input": "..."})
