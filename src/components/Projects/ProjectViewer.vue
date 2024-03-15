@@ -1,8 +1,29 @@
 <script setup>
 import { ref, defineExpose } from 'vue';
-import { VRow, VDialog, VCard, VForm, VCardTitle } from 'vuetify/lib/components/index.mjs';
+import { VRow, VDialog, VCard, VForm, VToolbar, VCol, VToolbarTitle, VIcon } from 'vuetify/lib/components/index.mjs';
+import ProjectCardVue from './ProjectCard.vue';
 
 const dialog = ref(false);
+
+const projectCards = ref([
+	{
+		title: "LLM",
+		descriptions: [
+			"Utilize Langchain"
+		],
+		githubUrl: "https://github.com/kcbdalton/langchain-vuetify"
+	},
+	{
+		title: "Baseball Stats Scraper",
+		descriptions: [
+			"Webscrape stats from the 2021 & 2022 MLB seasons",
+			"Utilizes ChartJS to visualize data"
+		],
+		githubUrl: "https://github.com/kcbdalton/baseball-stats"
+	},
+]);
+
+
 
 function open() {
 	setTimeout(() => {
@@ -17,12 +38,32 @@ defineExpose({
 </script>
 <template >
 	<v-row justify="center">
-		<v-dialog v-model="dialog" width="1024" >
-			<v-card :class="{'entry-animation' : dialog}">
+		<v-dialog v-model="dialog" width="80vw" >
+			<v-card :class="{'entry-animation' : dialog}" style="margin: 20px;" height="auto">
 				<v-form >
-					<v-card-title>
-						<span class="text-h5">Projects</span>
-					</v-card-title>
+					<v-toolbar
+						color="blue-grey"
+						dark
+						flat
+						>
+						<v-toolbar-title class="text-h5" style="user-select: none;">Projects</v-toolbar-title>
+
+						<v-icon class="icon" icon="mdi-close-thick" @click="dialog = false"/>
+
+					</v-toolbar>
+					<v-row dense>
+						<v-col
+							v-for="projectCard in projectCards"
+							:key="projectCard.title"
+							cols="auto"
+						>
+							<ProjectCardVue 
+								:title="projectCard.title" 
+								:descriptions="projectCard.descriptions" 
+								:githubUrl="projectCard.githubUrl"
+							/>
+						</v-col>
+					</v-row>
 				</v-form>
 			</v-card>
 		</v-dialog>
@@ -45,4 +86,11 @@ defineExpose({
 		transform: scale(1, .025);
 	}
 }
+.icon {
+	margin-right: 20px;
+}
+.icon:hover {
+	transform: scale(150%);
+}
+
 </style>

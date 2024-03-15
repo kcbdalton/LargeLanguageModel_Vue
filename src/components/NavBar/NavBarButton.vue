@@ -12,7 +12,7 @@ defineProps({
 </script>
 <template>
 	<v-btn class="button" :click="clickAction"> 
-		<v-icon :icon="icon"></v-icon>
+		<v-icon :icon="icon" style="padding-right: 20px;"></v-icon>
 		{{ label }}
 	</v-btn>
 </template>
@@ -21,5 +21,6 @@ defineProps({
 .button {
 	color: rgb(230, 220, 172);
 	font-size: 18px;
+	margin: 10px;
 }
 </style>

@@ -42,7 +42,7 @@ const emit = defineEmits({
 			<v-text-field 
 				class="user-prompt" 
 				label="What would you like to know about Ben Dalton?"
-				variant="solo"
+				variant="outlined"
 				clear-icon="mdi-close-circle"
 				clearable
 				v-model="userPrompt"
@@ -65,17 +65,10 @@ const emit = defineEmits({
 	left: 50%; 
 	transform: translate(-50%, -50%);
 	height: 5vw;
-	/* align-content: center; */
-	/* border: 2px solid red; */
 }
 .user-prompt {
 	position: absolute;
 	width: 90%;
-	/* width: 50%;
-	bottom: 5%;
-	left: 50%; 
-	transform: translate(-50%, -50%);
-	height: 5vw; */
 }
 .v-text-field {
 	font-size: 20px;
@@ -84,6 +77,7 @@ const emit = defineEmits({
 	font-size: 20px;
 	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
 
 .magic {
 	display: inline-block;

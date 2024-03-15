@@ -50,7 +50,7 @@ const emit = defineEmits({
 </script>
 
 <template>
-	<v-toolbar :elevation="8" class="custom-navbar">
+	<v-toolbar :elevation="8" class="custom-navbar" color="teal-darken-4">
 		<v-row dense justify="start">
 			<v-col
 				v-for="button in navBarButtons"
@@ -58,6 +58,12 @@ const emit = defineEmits({
 				cols="auto"
 				>
 				<NavBarButton :label="button.label" :icon="button.icon" @click="button.clickAction"/>
+			</v-col>
+			<v-col cols="auto" justify="end">
+				<a href="https://github.com/kcbdalton" target="blank">
+					<img src="../../assets/github-logo.png" class="github-logo"/>
+				</a>
+				
 			</v-col>
 		</v-row>
 	</v-toolbar>
@@ -76,5 +82,12 @@ const emit = defineEmits({
 	height: 60px;
 	z-index: 1000;
 	justify-content: flex-start;
+}
+.github-logo {
+	position: absolute;
+	right: 2%;
+	top: 15%;
+	max-width: 40px; 
+	height: auto; 
 }
 </style>

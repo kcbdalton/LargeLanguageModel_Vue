@@ -5,7 +5,6 @@ import NavBarContainer from './components/NavBar/NavBarContainer.vue';
 <template>
 	<NavBarContainer />
 	<router-view></router-view>
-	<!-- <pdf src="Documents/Election Checklist 2024.pdf"></pdf> -->
 </template>
 
 
@@ -18,6 +17,6 @@ import NavBarContainer from './components/NavBar/NavBarContainer.vue';
 	text-align: center;
 	color: #2c3e50;
 	margin-top: 60px;
-	background-color: rgb(224, 224, 224);
+	background-color: rgb(255, 0, 0);
 }
 </style>
