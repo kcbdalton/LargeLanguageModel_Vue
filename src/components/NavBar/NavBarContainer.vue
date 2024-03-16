@@ -4,8 +4,7 @@ import { useRouter } from 'vue-router';
 import { VToolbar, VRow, VCol } from 'vuetify/lib/components/index.mjs';
 import NavBarButton from './NavBarButton.vue';
 import ProjectViewer from '../Projects/ProjectViewer.vue';
-// import openAiService from '../../services/OpenAiService'
-import { messageService, createOpenAiRequest } from '../../services/MessageService';
+import { messageService } from '../../services/MessageService';
 
 const router = useRouter();
 const response = ref('')
@@ -32,11 +31,13 @@ const navBarButtons = ref([
 		icon: "mdi-text-box-search-outline",
 		clickAction: () => projectViewerDialog.value.open()
 	},
-	{
-		label: "Open AI Request",
-		icon: "mdi-text-box-search-outline",
-		clickAction: async () => response.value = await createOpenAiRequest()
-	},
+	// {
+	// 	label: "Open AI Request",
+	// 	icon: "mdi-text-box-search-outline",
+	// 	clickAction: async () => response.value = await createOpenAiRequest("what is the tallest mountain in the world")
+	// },
+
+	
 ]);
 
 watch(response, (newValue, oldValue) => {

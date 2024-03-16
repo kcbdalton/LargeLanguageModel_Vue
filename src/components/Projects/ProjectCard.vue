@@ -37,6 +37,7 @@ defineProps({
 .card {
 	color: rgb(0, 87, 87);
     user-select: none;
+	margin: 20px;
 }
 .card-link {
 	text-decoration: none; 

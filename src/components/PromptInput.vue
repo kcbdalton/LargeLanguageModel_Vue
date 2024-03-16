@@ -1,7 +1,6 @@
 <script setup>
 import { ref, defineEmits, watch } from 'vue';
 import { VTextField, VRow, VCol, VIcon } from 'vuetify/lib/components/index.mjs';
-import {  createOpenAiRequest } from '../services/MessageService';
 const userPrompt = ref('');
 const response = ref('');
 const animationTrigger = ref(false);
@@ -11,8 +10,6 @@ async function handleUserInput(event, source) {
 		triggerSuccessAnimation();	
 		emit('userPrompt', userPrompt.value);
 		userPrompt.value = '';
-		response.value = await createOpenAiRequest();
-		console.log("response in handleuserinpit", response.value)
 	}
 }
 
@@ -23,9 +20,7 @@ const triggerSuccessAnimation = () => {
     }, 1000); // Change this value according to your animation duration
 };
 
-watch(response, (newValue, oldValue) => {
-	console.log("response changed")
-	console.log("old value: ", oldValue)
+watch(response, (newValue) => {
 	emit('aiResponse', newValue)
 })
 
@@ -47,6 +42,7 @@ const emit = defineEmits({
 				clearable
 				v-model="userPrompt"
 				@keyup.enter="handleUserInput($event, 'enter')"
+				color="aliceblue"
 			/>
 		</v-col>
 		<v-col md="1">
@@ -69,6 +65,7 @@ const emit = defineEmits({
 .user-prompt {
 	position: absolute;
 	width: 90%;
+	color: aliceblue;
 }
 .v-text-field {
 	font-size: 20px;

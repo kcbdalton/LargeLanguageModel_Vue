@@ -39,7 +39,7 @@ defineExpose({
 <template >
 	<v-row justify="center">
 		<v-dialog v-model="dialog" width="80vw" >
-			<v-card :class="{'entry-animation' : dialog}" style="margin: 20px;" height="auto">
+			<v-card :class="{'entry-animation' : dialog}" style="margin: 20px; overflow-y: hidden;" height="auto">
 				<v-form >
 					<v-toolbar
 						color="blue-grey"

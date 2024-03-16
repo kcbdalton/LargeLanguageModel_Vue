@@ -3,10 +3,10 @@ import { ref } from 'vue';
 import PromptInput from '../components/PromptInput.vue';
 import MessageTextArea from '../components/MessageTextArea.vue';
 import NavBarContainer from '@/components/NavBar/NavBarContainer.vue';
-import { messageService } from '../services/MessageService';
+import { messageService, createOpenAiRequest } from '../services/MessageService';
 const messages = ref([]);
 
-const handleUserPrompt = (prompt) => {
+async function handleUserPrompt(prompt) {
 	messageService.userPrompt = prompt;
 	messages.value.push(
 		{
@@ -14,6 +14,9 @@ const handleUserPrompt = (prompt) => {
 			text: prompt
 		}
 	);
+
+	let aiResponse = await createOpenAiRequest(prompt);
+	handleAiResponse(aiResponse)
 }
 
 const handleAiResponse = (response) => {
