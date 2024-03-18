@@ -15,7 +15,7 @@ from langchain.chains import create_retrieval_chain
 from langchain import hub
 import os
 
-openai_connection = ChatOpenAI(temperature=0, model="gpt-4-0613", api_key='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')
+openai_connection = ChatOpenAI(temperature=0, model="gpt-4-0613", api_key=os.getenv(OPENAI_API_KEY))
 
 print(llm)
 # llm = ChatOpenAI()
@@ -29,7 +29,7 @@ def retrieve_personal_info(prompt: str):
 	print("text splitter: \n", text_splitter)
 	texts = text_splitter.split_documents(docs)
 	print("texts: \n", texts)
-	embeddings = OpenAIEmbeddings( api_key='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')
+	embeddings = OpenAIEmbeddings( api_key=os.getenv(OPENAI_API_KEY))
 	vector_store = faiss.FAISS.from_documents(texts, embeddings)
 	retriever = vector_store.as_retriever()
 	context_docs = retriever.get_relevant_documents(prompt)
