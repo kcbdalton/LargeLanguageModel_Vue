@@ -1,5 +1,8 @@
 # Description
-- Utilizes Langchain to create custom written agents and 
+- Utilizes Langchain to develop and employ custom written agents to interface with Open AI.
+- Frontend developed using the Vuetify framework.
+- Developed and deployed a serverless backend infrastructure using AWS services, including API Gateway, Lambda, and S3.
+
 
 
 
