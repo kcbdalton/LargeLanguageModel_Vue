@@ -3,19 +3,19 @@ import { ref } from 'vue';
 import PromptInput from '../components/PromptInput.vue';
 import MessageTextArea from '../components/MessageTextArea.vue';
 import NavBarContainer from '@/components/NavBar/NavBarContainer.vue';
-import { messageService, createOpenAiRequest } from '../services/MessageService';
-const messages = ref([]);
+import { invokeLLM } from '../services/InvokeLLMService';
 
+// How to install Linux on Windows with WSL
+// https://learn.microsoft.com/en-us/windows/wsl/install
+const messages = ref([]);
 async function handleUserPrompt(prompt) {
-	messageService.userPrompt = prompt;
 	messages.value.push(
 		{
 			user: 'human', 
 			text: prompt
 		}
 	);
-
-	let aiResponse = await createOpenAiRequest(prompt);
+	let aiResponse = await invokeLLM(prompt);
 	handleAiResponse(aiResponse)
 }
 
