@@ -5,7 +5,6 @@ environment.js
 /lambda/include
 /lambda/Lib
 /lambda/Scripts
-/lambda/Ben-info.txt
 /lambda/pyvenv.cfg
 /lambda/lambda_layer/
 /lambda/lambda_layer.zip
