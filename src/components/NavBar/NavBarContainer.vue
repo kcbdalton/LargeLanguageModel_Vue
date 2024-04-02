@@ -7,8 +7,7 @@ import ProjectViewer from '../Projects/ProjectViewer.vue';
 import { messageService } from '../../services/MessageService';
 
 const router = useRouter();
-const response = ref('')
-// const showPDF = ref(false);
+const response = ref('');
 const projectViewerDialog = ref(false);
 const navBarButtons = ref([
 	{
@@ -30,19 +29,10 @@ const navBarButtons = ref([
 		label: "View Projects",
 		icon: "mdi-text-box-search-outline",
 		clickAction: () => projectViewerDialog.value.open()
-	},
-	// {
-	// 	label: "Open AI Request",
-	// 	icon: "mdi-text-box-search-outline",
-	// 	clickAction: async () => response.value = await createOpenAiRequest("what is the tallest mountain in the world")
-	// },
-
-	
+	}
 ]);
 
-watch(response, (newValue, oldValue) => {
-	console.log("response changed")
-	console.log("old value: ", oldValue)
+watch(response, (newValue) => {
 	emit('aiResponse', newValue)
 })
 const emit = defineEmits({
@@ -75,7 +65,7 @@ const emit = defineEmits({
 <style scoped>
 .custom-navbar {
 	display: flex;
-	background-color: rgb(24, 83, 108);
+	background-color: rgb(66, 64, 71);
 	position: fixed;
 	top: 0;
 	left: 0;

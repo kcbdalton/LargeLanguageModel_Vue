@@ -15,17 +15,14 @@ async function handleUserPrompt(prompt) {
 			text: prompt
 		}
 	);
-	let aiResponse = await invokeLLM(prompt);
-	handleAiResponse(aiResponse)
-}
-
-const handleAiResponse = (response) => {
-	messages.value.push(
-		{
-			user: 'ai', 
-			text: response
-		}
-	);
+	await invokeLLM(prompt).then((response) => {
+		messages.value.push(
+			{
+				user: 'ai', 
+				text: response
+			}
+		);
+	});
 }
 </script>
 

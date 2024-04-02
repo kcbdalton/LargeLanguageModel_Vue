@@ -23,8 +23,6 @@ const projectCards = ref([
 	},
 ]);
 
-
-
 function open() {
 	setTimeout(() => {
 		dialog.value = true;
@@ -42,7 +40,7 @@ defineExpose({
 			<v-card :class="{'entry-animation' : dialog}" style="margin: 20px; overflow-y: hidden;" height="auto">
 				<v-form >
 					<v-toolbar
-						color="blue-grey"
+						color="teal-darken-4"
 						dark
 						flat
 						>

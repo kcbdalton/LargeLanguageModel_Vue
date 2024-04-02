@@ -14,10 +14,10 @@ async function handleUserInput(event, source) {
 }
 
 const triggerSuccessAnimation = () => {
-    animationTrigger.value = true;
-    setTimeout(() => {
-        animationTrigger.value = false;
-    }, 1000); // Change this value according to your animation duration
+	animationTrigger.value = true;
+	setTimeout(() => {
+		animationTrigger.value = false;
+	}, 1000); // Change this value according to your animation duration
 };
 
 watch(response, (newValue) => {
@@ -36,7 +36,7 @@ const emit = defineEmits({
 		<v-col md="11">
 			<v-text-field 
 				class="user-prompt" 
-				label="What would you like to know about Ben Dalton?"
+				label="What would you like to know?"
 				variant="outlined"
 				clear-icon="mdi-close-circle"
 				clearable
@@ -47,7 +47,7 @@ const emit = defineEmits({
 		</v-col>
 		<v-col md="1">
 			<span class="magic" :class="{ 'is-animated': animationTrigger }" style="--r:15px;" @click="handleUserInput($event, 'icon')">
-				<v-icon icon="mdi-send"/>
+				<v-icon icon="mdi-send" color="white"/>
 			</span>
 		</v-col>
 	</v-row>
@@ -74,7 +74,6 @@ const emit = defineEmits({
 	font-size: 20px;
 	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-
 
 .magic {
 	display: inline-block;
