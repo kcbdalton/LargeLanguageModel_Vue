@@ -1,7 +1,6 @@
 <script setup>
 import { defineProps } from 'vue';
 import { VRow, VCol, VIcon } from 'vuetify/lib/components/index.mjs';
-// const userPrompt = ref('');
 
 const props = defineProps({
 	message: {
@@ -9,8 +8,6 @@ const props = defineProps({
 		prompt: String
 	}
 });
-
-
 </script>
 
 <template>
@@ -70,5 +67,4 @@ const props = defineProps({
 	margin-left: 100px; 
 	user-select: none;
 }
-
 </style>

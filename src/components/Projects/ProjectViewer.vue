@@ -4,7 +4,6 @@ import { VRow, VDialog, VCard, VForm, VToolbar, VCol, VToolbarTitle, VIcon } fro
 import ProjectCardVue from './ProjectCard.vue';
 
 const dialog = ref(false);
-
 const projectCards = ref([
 	{
 		title: "LLM",
@@ -39,15 +38,9 @@ defineExpose({
 		<v-dialog v-model="dialog" width="80vw" >
 			<v-card :class="{'entry-animation' : dialog}" style="margin: 20px; overflow-y: hidden;" height="auto">
 				<v-form >
-					<v-toolbar
-						color="teal-darken-4"
-						dark
-						flat
-						>
+					<v-toolbar color="teal-darken-4" dark flat>
 						<v-toolbar-title class="text-h5" style="user-select: none;">Projects</v-toolbar-title>
-
 						<v-icon class="icon" icon="mdi-close-thick" @click="dialog = false"/>
-
 					</v-toolbar>
 					<v-row dense>
 						<v-col

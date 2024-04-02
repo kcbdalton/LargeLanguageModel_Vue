@@ -25,8 +25,7 @@ watch(response, (newValue) => {
 })
 
 const emit = defineEmits({
-	userPrompt: String,
-	aiResponse: String
+	userPrompt: String
 });
 
 </script>
@@ -36,7 +35,7 @@ const emit = defineEmits({
 		<v-col md="11">
 			<v-text-field 
 				class="user-prompt" 
-				label="What would you like to know?"
+				label="Enter your prompt here..."
 				variant="outlined"
 				clear-icon="mdi-close-circle"
 				clearable
@@ -82,6 +81,10 @@ const emit = defineEmits({
 	--r: 45px;
 	transform: scale(150%);
 	animation: var(--animate);
+}
+
+.magic:hover {
+	cursor: pointer;
 }
 
 .magic i {

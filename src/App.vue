@@ -7,8 +7,6 @@ import NavBarContainer from './components/NavBar/NavBarContainer.vue';
 	<router-view></router-view>
 </template>
 
-
-
 <style>
 #app {
 	font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -17,9 +15,10 @@ import NavBarContainer from './components/NavBar/NavBarContainer.vue';
 	text-align: center;
 	color: #2c3e50;
 	margin-top: 60px;
-	
 }
+
 body {
+	/* background-color: rgb(182, 182, 182); */
 	background-color: rgb(66, 64, 71);
 }
 </style>

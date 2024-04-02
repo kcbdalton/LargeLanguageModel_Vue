@@ -1,13 +1,11 @@
 <script setup>
-import { ref, defineEmits, watch } from 'vue';
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { VToolbar, VRow, VCol } from 'vuetify/lib/components/index.mjs';
 import NavBarButton from './NavBarButton.vue';
 import ProjectViewer from '../Projects/ProjectViewer.vue';
-import { messageService } from '../../services/MessageService';
 
 const router = useRouter();
-const response = ref('');
 const projectViewerDialog = ref(false);
 const navBarButtons = ref([
 	{
@@ -20,11 +18,11 @@ const navBarButtons = ref([
 		icon: "mdi-message-text",
 		clickAction: () => router.push("/LLM")
 	},
-	{
-		label: "View Resume",
-		icon: "mdi-text-box-search-outline",
-		clickAction: () => console.log("message service: ", messageService)
-	},
+	// {
+	// 	label: "View Resume",
+	// 	icon: "mdi-text-box-search-outline",
+	// 	clickAction: () => console.log("message service: ", messageService)
+	// },
 	{
 		label: "View Projects",
 		icon: "mdi-text-box-search-outline",
@@ -32,12 +30,6 @@ const navBarButtons = ref([
 	}
 ]);
 
-watch(response, (newValue) => {
-	emit('aiResponse', newValue)
-})
-const emit = defineEmits({
-	aiResponse: String
-});
 </script>
 
 <template>

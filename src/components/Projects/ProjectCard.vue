@@ -1,9 +1,6 @@
 <script setup>
-// import { ref, } from 'vue';
-// import { useRouter } from 'vue-router';
-import { VCard, VCardItem} from 'vuetify/lib/components/index.mjs';
+import { VCard, VCardItem } from 'vuetify/lib/components/index.mjs';
 import { defineProps } from 'vue';
-// import { RouterLink } from 'vue-router';
 
 defineProps({
 	title: String,
@@ -15,7 +12,7 @@ defineProps({
 
 <template>
 	<a :href="githubUrl" class="card-link" target="blank">
-		<v-card class="card" variant="tonal" width="344" height="auto" hover @click="console.log('card clicked')" dark>
+		<v-card class="card" variant="tonal" width="auto" height="auto" hover dark>
 			<v-card-item>
 				<div>
 					<div style="font-size: 20px; font-weight: bold;">
